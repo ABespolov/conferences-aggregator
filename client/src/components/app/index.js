@@ -16,7 +16,8 @@ class App extends Component {
         currentPage: 1,
         allLoaded: false,
         searchKeys: null,
-        searchText: ''
+        searchText: '',
+        offline: false
     };
 
     componentDidMount() {
@@ -65,7 +66,6 @@ class App extends Component {
     onSearch = (inputText) => {
         const text = inputText.toLowerCase();
         this.search(text);
-        this.updateData();
     };
 
     getData = () => {
@@ -91,19 +91,21 @@ class App extends Component {
             const data = JSON.parse(localStorage.getItem('conferencesData'));
             this.setState({
                 load: false,
-                response: data
+                response: data,
+                searchKeys: null,
+                offline: true
             })
         });
     };
 
     render() {
-        const {load, response, searchKeys, allLoaded} = this.state;
+        const {load, response, searchKeys, allLoaded, offline} = this.state;
         const list = load ? null : <List data={response} searchKeys={searchKeys}/>;
         return (
             <>
                 <Panel onSearch={this.onSearch}/>
                 <div>{list}</div>
-                <Spinner allLoaded={allLoaded}/>;
+                <Spinner offline={offline} allLoaded={allLoaded}/>;
             </>
         );
     }
