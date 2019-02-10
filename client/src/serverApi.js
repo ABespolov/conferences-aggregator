@@ -1,6 +1,6 @@
 class ServerApi {
     static getData = async (page) => {
-        const response = await fetch('/api/world', {
+        const response = await fetch('/api/getPage', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

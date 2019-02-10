@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReminderSelect from '../reminderSelect';
 import './style.css';
 
-const CHECK_REMINDER_TIME = 1000; // checking each hour for triggering
+const CHECK_REMINDER_TIME = 1000 * 60; // checking each minute for triggering
 
 class Reminder extends Component {
     state = {

@@ -3,9 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const needle = require('needle');
 const cheerio = require('cheerio');
-var uniqid = require('uniqid');
 const crypto = require('crypto');
-const tress = require('tress');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -15,15 +13,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// API calls
-app.get('/api/hello', (req, res) => {
-    res.send({
-        express: 'Hello From Express'
-    });
-});
 
-
-app.post('/api/world', (req, res) => {
+app.post('/api/getPage', (req, res) => {
     let data = {};
     let count = 0;
     const hash = crypto.createHash('sha256');
@@ -41,6 +32,7 @@ app.post('/api/world', (req, res) => {
                 const link = $(this).find('.title').attr('href');
                 const description = $(this).find('p').text();
                 const date = $(this).find('time').attr('datetime');
+                //using hash function to be able restore each conferences data from localStorage
                 const id = crypto.createHash('md5').update(title + description + date.toString()).digest("hex");
 
                 data[id] = {
@@ -51,7 +43,6 @@ app.post('/api/world', (req, res) => {
                 }
             });
 
-            //collection = JSON.stringify(data);
             console.log(Object.entries(data).length === 0);
             if (Object.entries(data).length === 0) {
                 res.send({end: true});
@@ -64,16 +55,12 @@ app.post('/api/world', (req, res) => {
         .catch(function (err) {
             // ...
         });
-
-
 });
 
 
 if (process.env.NODE_ENV === 'production') {
-    // Serve any static files
     app.use(express.static(path.join(__dirname, 'client/build')));
 
-    // Handle React routing, return all requests to React app
     app.get('*', function (req, res) {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });

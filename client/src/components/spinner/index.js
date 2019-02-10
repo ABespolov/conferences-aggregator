@@ -5,7 +5,7 @@ class Spinner extends Component {
     render() {
         let text = 'Ищем лучшие конференции для Вас!';
         const {allLoaded} = this.props;
-        if (this.allLoaded) {
+        if (allLoaded) {
             text = 'Пока что это все...';
         }
         return (
