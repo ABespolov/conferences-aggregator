@@ -1,0 +1,35 @@
+.reminder{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    cursor: pointer;
+    color: #ff5722;
+}
+
+.reminder:hover{
+    background: #ff5722;
+    color: #fff;
+}
+
+.reminder:active{
+    color: #ff5722;
+    background: #fff;
+}
+
+.selected-reminder{
+    background: #ff5722!important;
+    color: #fff; 
+}
+
+@media(max-width: 400px){
+    .reminder{
+        width: 40px;
+        height: 40px;
+    }
+}
+

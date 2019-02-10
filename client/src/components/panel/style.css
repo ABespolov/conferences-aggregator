@@ -1,0 +1,29 @@
+.panel{
+    height: 64px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.panel h1{
+    font-size: 14px;
+    font-family: Roboto;
+    margin: 0 0 0 25px;
+    line-height: 18px;
+    position: absolute;
+
+}
+
+.panel img{
+    max-width: 18px;
+}
+
+@media(max-width: 1000px){
+    .panel h1{
+        display: none;
+    }
+}

@@ -1,0 +1,47 @@
+.list {
+    padding: 0 20px;
+    margin-top: 30px;
+}
+
+.listItem {
+    max-width: 600px;
+    height: 220px;
+    box-sizing: border-box;
+    margin: 16px auto;
+    padding: 24px;
+    list-style: none;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 2px;
+    font-family: "Roboto";
+    animation: fadeInUp .5s 0s;
+    overflow: hidden;
+    background: #fff;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@media (max-width: 600px) {
+    .listItem {
+        padding: 15px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 400px) {
+    .listItem {
+        padding: 10px;
+        height: 160px;
+    }
+}
