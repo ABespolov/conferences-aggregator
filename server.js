@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-app.post('/api/getPage', (req, res) => {
+app.post('/api/page', (req, res) => {
     let data = {};
     let count = 0;
     const hash = crypto.createHash('sha256');
@@ -43,14 +43,11 @@ app.post('/api/getPage', (req, res) => {
                 }
             });
 
-            console.log(Object.entries(data).length === 0);
             if (Object.entries(data).length === 0) {
                 res.send({end: true});
             } else {
                 res.send(data);
             }
-
-
         })
         .catch(function (err) {
             // ...
