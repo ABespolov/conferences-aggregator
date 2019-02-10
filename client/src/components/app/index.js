@@ -73,7 +73,7 @@ class App extends Component {
         ServerApi.getData(currentPage).then((body) => {
             if (body.end !== true) {
                 this.setState(({load, response, currentPage}) => {
-                    localStorage.setItem('conferencesData', Object.assign(response, body));
+                    localStorage.setItem('conferencesData', JSON.stringify(Object.assign(response, body)));
                     return {
                         load: false,
                         response: Object.assign(response, body),

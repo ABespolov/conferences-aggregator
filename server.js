@@ -50,7 +50,7 @@ app.post('/api/page', (req, res) => {
             }
         })
         .catch(function (err) {
-            // ...
+            throw new Error;
         });
 });
 
